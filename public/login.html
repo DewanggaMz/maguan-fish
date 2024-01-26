@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,300&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="login.css" />
+		<title>login</title>
+	</head>
+	<body>
+		<header>
+			<img src="https://i.ibb.co/Sy19fgr/cloud1.webp" class="cloud" />
+			<img src="https://i.ibb.co/fMVGXLQ/cloud2.webp" class="cloud2" />
+			<div class="container-hero">
+				<img
+					src="https://i.ibb.co/F6PVDW5/people-lock.webp"
+					class="hero"
+					alt=""
+				/>
+			</div>
+		</header>
+		<main>
+			<div class="form-content">
+				<div class="title">
+					<span>Masuk</span>
+				</div>
+				<div class="container-form">
+					<form class="form">
+						<div class="inputBox">
+							<img
+								src="https://i.ibb.co/Tb6rJvM/profile-1.webp"
+								alt="profile-1"
+								border="0"
+								class="image"
+							/>
+							<input
+								class="email"
+								type="user"
+								name="user"
+								id="user"
+								readonly
+								value="maguanfarm"
+							/>
+						</div>
+						<div class="inputBox">
+							<img src="https://i.ibb.co/SyDCvPz/lock.webp" class="image" />
+							<input type="password" name="password" id="password" required />
+							<label for="password">Password</label>
+							<button id="eye" type="button">
+								<img
+									src="https://i.ibb.co/8BBfh2f/eye.png"
+									alt="eye"
+									border="0"
+									class="image"
+								/>
+							</button>
+						</div>
+						<button class="submit" type="submit">Masuk</button>
+					</form>
+				</div>
+				<div class="other-menu">
+					<span id="status"></span>
+				</div>
+			</div>
+		</main>
+
+		<script src="firebase.js" type="module"></script>
+		<script type="module"></script>
+	</body>
+</html>

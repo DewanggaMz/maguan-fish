@@ -1,0 +1,293 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  outline: none;
+  border: none
+}
+
+html {
+  font-size: 16px
+}
+
+:root {
+  --mainColor: #18226b;
+  --gradient: linear-gradient(to bottom, #0063e6, #0772ff);
+  --primary: #0063e6;
+  --second: #4e54c8;
+  --gray1: rgb(236, 236, 236);
+  --gray2: rgb(226, 226, 226);
+  --white2: #f4f4f4;
+  --white: white;
+  --color-sec: #53528a;
+  --line: rgba(0, 0, 0, 0.164);
+  --font: "Rubik", sans-serif
+}
+
+button {
+  background: rgba(0, 0, 0, 0)
+}
+
+h1,
+h2,
+h3,
+h4,
+span,
+a,
+p {
+  font-family: var(--font);
+  font-weight: 500;
+  color: var(--mainColor)
+}
+
+a {
+  font-size: .9rem;
+  font-weight: 500
+}
+
+input {
+  background: rgba(0, 0, 0, 0)
+}
+
+header {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background-image: linear-gradient(102.4deg, rgb(252, 192, 96) 7.8%, rgb(249, 131, 255) 70.3%, rgb(2, 245, 255) 100.9%);
+  background-size: 300% 300%;
+  animation: gradient 12s ease-in-out infinite;
+  overflow: hidden
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0 50%
+  }
+}
+
+.container-hero {
+  position: absolute;
+  bottom: 0;
+  width: auto;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px
+}
+
+.container-hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .137);
+  animation: circle 2.5s ease-in-out infinite alternate;
+  backdrop-filter: blur(25)
+}
+
+@keyframes circle {
+  0% {
+    transform: translateY(-4px) translate(-50%, -50%) scale(0.95)
+  }
+
+  100% {
+    transform: translateY(4px) translate(-50%, -50%) scale(1)
+  }
+}
+
+.hero {
+  height: 220px;
+  animation: hero 5s ease-in-out infinite alternate
+}
+
+@keyframes hero {
+  0% {
+    transform: translateY(-3px)
+  }
+
+  100% {
+    transform: translateY(3px)
+  }
+}
+
+.cloud {
+  height: 25px;
+  position: absolute;
+  left: 8%;
+  top: 85px;
+  animation: cloud 2.5s ease-in-out infinite alternate
+}
+
+.cloud2 {
+  height: 30px;
+  position: absolute;
+  right: 10%;
+  top: 25px;
+  animation: cloud 3s ease-in-out infinite alternate
+}
+
+@keyframes cloud {
+  0% {
+    transform: translateY(-4px)
+  }
+
+  100% {
+    transform: translateY(4px)
+  }
+}
+
+@media only screen and (min-width: 760px) {
+  header {
+    height: 380px
+  }
+
+  .hero {
+    height: 350px
+  }
+
+  .cloud {
+    height: 45px;
+    top: 85px
+  }
+
+  .cloud2 {
+    height: 34px;
+    top: 50px
+  }
+}
+
+main {
+  width: 100%;
+  padding-bottom: 50px;
+  background: var(--white);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  position: relative;
+  z-index: 1;
+  bottom: 0;
+  top: -10px
+}
+
+main .form-content .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  font-size: 1.3rem;
+  font-weight: 700
+}
+
+main .container-form {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  margin-bottom: 30px
+}
+
+main .container-form .form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px
+}
+
+main .container-form .inputBox {
+  height: 40px;
+  width: 100%;
+  padding: 0 8px;
+  border-bottom: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
+  position: relative
+}
+
+main .container-form .inputBox label {
+  position: absolute;
+  left: 40px;
+  font-family: var(--font);
+  color: var(--mainColor);
+  transition: .4s;
+  font-size: .9rem
+}
+
+main .container-form .inputBox input {
+  height: 100%;
+  width: 100%;
+  color: var(--mainColor);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0 10px
+}
+
+main .container-form .inputBox input:focus~label,
+main .container-form .inputBox input:valid~label {
+  transform: scale(0);
+  opacity: 0
+}
+
+main .container-form .inputBox .image {
+  height: 21px;
+  width: 21px
+}
+
+main .container-form .submit {
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 10px;
+  width: 100%;
+  background: var(--primary);
+  font-family: var(--font);
+  font-weight: 500;
+  font-size: .9rem;
+  color: var(--white);
+  transition: .3s
+}
+
+main .container-form .submit:active {
+  background: #4146a5
+}
+
+main .other-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-direction: column
+}
+
+main .other-menu .link {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 5px
+}
+
+main .other-menu .link .text {
+  font-size: .8rem;
+  font-weight: 400
+}
+
+@media only screen and (max-height: 600px) {
+  main {
+    height: 100vh
+  }
+}
+
+/*# sourceMappingURL=index.min.css.map */
