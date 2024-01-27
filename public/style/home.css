@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #4799eb;
+  background: hsl(217.2 91.2% 59.8%);
   padding: 1rem;
   font-size: 15px;
   width: 100%;
@@ -19,6 +19,16 @@
 .topnav h1 {
   font-size: 1.4rem;
   font-weight: 600;
+}
+
+.indicator-online {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: rgb(255, 59, 59);
+  /* background-color: rgb(7, 247, 7); */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  animation: scale-up 1.4s ease-in-out infinite alternate;
 }
 
 main {
@@ -36,7 +46,7 @@ main {
   padding: 1rem 2rem;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  background: #4799eb;
+  background: hsl(217.2 91.2% 59.8%);
   margin: 1rem auto;
 }
 
@@ -60,6 +70,12 @@ main {
 .content h2,
 .content input {
   margin-bottom: 15px;
+}
+
+.ip-address-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .range-slider__range {
@@ -131,7 +147,7 @@ th {
 }
 
 tr:nth-child(even) {
-  background-color: #50608d62;
+  background-color: #304d9c8f;
 }
 
 
@@ -149,4 +165,17 @@ tr:nth-child(even) {
 
 .display-none {
   display: none;
+}
+
+
+/* --------------------------------------animation-------------------------- */
+
+@keyframes scale-up {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.8);
+  }
 }
