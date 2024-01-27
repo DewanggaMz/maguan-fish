@@ -3,42 +3,68 @@
 	<head>
 		<title>Kolam Pintar</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-		<link rel="stylesheet" href="index.css" />
-		<link rel="stylesheet" href="login.css" />
-		<!-- <style>
-
-		</style> -->
+		<link rel="stylesheet" href="./style/index.css" />
 	</head>
 	<body>
 		<div class="topnav container">
 			<h1>AUTO FEED</h1>
-			<span id="date"></span>
 		</div>
-		<img
-			class="hero"
-			src="https://i.ibb.co/MRnGGN8/Whats-App-Image-2024-01-26-at-12-46-53-f81a410b.jpg"
-			alt="Whats-App-Image-2024-01-26-at-12-46-53-f81a410b"
-			border="0"
-		/>
-		<div class="content">
-			<h2>Atur Jumlah pakan</h2>
-			<input
-				class="range-slider__range"
-				type="range"
-				step="100"
-				value="0"
-				min="0"
-				max="1000"
-			/>
-			<div class="range-slider-wrapper__value">
-				<span class="range-slider-title__value">Berat/g :</span>
-				<span class="range-slider__value">0</span>
+		<main>
+			<div class="fish-container">
+				<img
+					class="fish"
+					src="https://i.ibb.co/MRnGGN8/Whats-App-Image-2024-01-26-at-12-46-53-f81a410b.jpg"
+					alt="Whats-App-Image-2024-01-26-at-12-46-53-f81a410b"
+					border="0"
+				/>
 			</div>
-		</div>
+			<section class="content card">
+				<h2>Atur Jumlah pakan</h2>
+				<input
+					class="range-slider__range"
+					type="range"
+					step="100"
+					value="0"
+					min="0"
+					max="1000"
+				/>
+				<div class="range-slider-wrapper__value">
+					<span class="range-slider-title__value">Berat/g :</span>
+					<span class="range-slider__value">0</span>
+				</div>
+			</section>
+			<section class="log card">
+				<div class="title">
+					<h2>Log Status</h2>
+					<span id="date"></span>
+				</div>
+				<table class="log-table">
+					<tr>
+						<th> Time </th>
+						<th> Status </th>
+						<th> Berat </th>
+					</tr>
+					<tr>
+						<td> 16.00 </td>
+						<td> Success </td>
+						<td> 200 </td>
+					</tr>
+					<tr>
+						<td> 16.00 </td>
+						<td> Success </td>
+						<td> 200 </td>
+					</tr>
+					<tr>
+						<td> 16.00 </td>
+						<td> Success </td>
+						<td> 200 </td>
+					</tr>
+				</table>
+			</section>
+		</main>
 
-		<div class="overlay">
-			<header>
+		<div class="overlay display-none">
+			<header class="header-login">
 				<img src="https://i.ibb.co/Sy19fgr/cloud1.webp" class="cloud" />
 				<img src="https://i.ibb.co/fMVGXLQ/cloud2.webp" class="cloud2" />
 				<div class="container-hero">
@@ -49,7 +75,7 @@
 					/>
 				</div>
 			</header>
-			<main>
+			<section class="form-section">
 				<div class="form-content">
 					<div class="title">
 						<span>Masuk</span>
@@ -89,93 +115,12 @@
 						</form>
 					</div>
 					<div class="other-menu">
-						<span id="status"></span>
+						<span id="message"></span>
 					</div>
 				</div>
-			</main>
+			</section>
 		</div>
-
-		<script src="firebase.js" type="module"></script>
-		<script type="module">
-			import {
-				getDatabase,
-				ref,
-				get,
-				set,
-			} from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js"
-
-			const db = getDatabase()
-
-			const rangeSlider = document.querySelector(".range-slider__range")
-			const appearanceFeed = document.querySelector(".range-slider__value")
-
-			document.addEventListener("DOMContentLoaded", () => {
-				get(ref(db, "feed")).then((snapshot) => {
-					if (snapshot.exists()) {
-						rangeSlider.value = snapshot.val()
-						appearanceFeed.innerHTML = snapshot.val()
-					}
-				})
-			})
-
-			rangeSlider.addEventListener("input", (e) => {
-				const value = e.target.value
-				appearanceFeed.innerHTML = value
-				set(ref(db, "feed"), value)
-					.then(() => {
-						console.log("success")
-					})
-					.catch((err) => {
-						console.log(err)
-					})
-			})
-
-			// date
-			const date = new Date().toLocaleDateString("id-ID")
-			document.getElementById("date").innerHTML = date
-
-			// login
-			const eye = document.getElementById("eye")
-			const password = document.getElementById("password")
-			const form = document.querySelector(".form")
-			const status = document.getElementById("status")
-			const overlay = document.querySelector(".overlay")
-
-			eye.addEventListener("click", () => {
-				if (password.type === "password") {
-					password.type = "text"
-					eye.innerHTML = `<img src="https://i.ibb.co/Y8dRkHz/eye-open.png" alt="eye-open" border="0" class="image"/>`
-				} else {
-					password.type = "password"
-					eye.innerHTML = `<img src="https://i.ibb.co/8BBfh2f/eye.png" alt="eye" border="0" class="image"/>`
-				}
-			})
-
-			form.addEventListener("submit", async (e) => {
-				e.preventDefault()
-
-				await get(ref(db, "login")).then((snapshot) => {
-					if (snapshot.exists()) {
-						const { password: passwordDb, user: userDb } = snapshot.val()
-						const { password: passwordForm, user: userForm } = e.target
-
-						console.log(passwordDb, passwordForm.value)
-						console.log(userDb, userForm.value)
-
-						if (
-							passwordForm.value === passwordDb &&
-							userForm.value === userDb
-						) {
-							console.log("login success")
-							overlay.style.display = "none"
-							status.innerHTML = "login success"
-						} else {
-							console.log("login failed")
-							status.innerHTML = "login failed"
-						}
-					}
-				})
-			})
-		</script>
+		<script src="./script/firebase.mjs" type="module"></script>
+		<script src="./script/index.mjs" type="module"></script>
 	</body>
 </html>
